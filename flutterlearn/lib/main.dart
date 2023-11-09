@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlearn/pages/firstpage.dart';
 import 'package:flutterlearn/pages/home_page.dart';
-import 'package:flutterlearn/pages/secondpage.dart';
+import 'package:flutterlearn/pages/profilepage.dart';
 import 'package:flutterlearn/pages/settings_page.dart';
 
 void main() {
