@@ -35,7 +35,7 @@ class _FirstpageState extends State<Firstpage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selected_index,
         onTap: _navigateBottomBar,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
