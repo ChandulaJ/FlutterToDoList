@@ -9,4 +9,6 @@ class Weather{
     return Weather(cityName: json['name'], temperature: json['main']['temp'].toDouble(),
         mainCondition: json['weather'][0]['main']);
   }
+
+
 }

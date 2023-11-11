@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlearn/pages/firstpage.dart';
 import 'package:flutterlearn/pages/home_page.dart';
+import 'package:flutterlearn/pages/weather_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -9,6 +11,7 @@ void main() async {
 
   //open a box
   var box = await Hive.openBox("mybox");
+  var wbox = await Hive.openBox("myweatherbox");
 
   runApp(const MyApp());
 }
@@ -39,10 +42,14 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: FirstPage(),
       theme: ThemeData(
           primarySwatch: customSwatch,
           textTheme: TextTheme(titleSmall: GoogleFonts.roboto())),
+      routes: {
+        '/weatherpage':(context)=>WeatherPage(),
+        '/homepage':(context)=>HomePage(),
+      },
     ); //default color
   }
 }

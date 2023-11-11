@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutterlearn/data/database.dart";
+import "package:flutterlearn/pages/weather_page.dart";
 import "package:flutterlearn/utilities/dialog_box.dart";
 import "package:flutterlearn/utilities/todoTile.dart";
 import "package:hive/hive.dart";
@@ -12,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   final _controller = TextEditingController();
   final _mybox = Hive.box("mybox");
   ToDoDatabase db = ToDoDatabase();
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
@@ -75,7 +78,9 @@ class _HomePageState extends State<HomePage> {
           child: Text('TO DO'),
         ),
       ),
-      body: ListView.builder(
+      body:
+
+      ListView.builder(
         itemCount: db.todolist.length,
         itemBuilder: (context, index) {
           return ToDoTile(
@@ -86,10 +91,14 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
+
+
+
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,
         child: Icon(Icons.add),
       ),
+
     );
   }
 }

@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
-import 'package:myweatherapp/services/weather_services.dart';
-
 import '../models/weather_model.dart';
+import '../services/weather_services.dart';
 
 class WeatherPage extends StatefulWidget {
-  const WeatherPage({super.key});
+
+   WeatherPage({super.key});
 
   @override
   State<WeatherPage> createState() => _WeatherPageState();
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  final _myweatherbox = Hive.box("myweatherbox");
+  //WeatherDatabase weatherdb = WeatherDatabase();
+
 //api key
 
   final _weatherService = WeatherService('dee2d070f3f11eaf3abf4a200586cefc');
@@ -71,20 +76,31 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[300],
+      appBar: AppBar(
+        elevation: 0.0,
+        title: Center(
+            child: Text('WEATHER'),
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(_weather?.cityName ?? "loading city ...",style: ,),
+            Text(_weather?.cityName ?? "Loading city ...",style: GoogleFonts.poppins(fontSize: 30.0,fontWeight: FontWeight.bold),),
             //animation
             Lottie.asset(getWeatherAnimations(_weather?.mainCondition)),
+            Text(_weather?.mainCondition ?? "",style: GoogleFonts.dmSans(fontSize: 30.0,fontWeight: FontWeight.bold),),
+SizedBox(height: 20.0,),
+            Text('${_weather?.temperature.round()}°C',style: GoogleFonts.montserrat(fontSize: 100.0,color: Colors.white),),
 
-            Text('${_weather?.temperature.round()}°C'),
 
-            Text(_weather?.mainCondition ?? "")
+
           ],
         ),
+
       ),
+
     );
   }
 }
