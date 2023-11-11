@@ -52,7 +52,7 @@ class _WeatherPageState extends State<WeatherPage> {
     }
 
     var currentTime = DateTime.now();
-    return currentTime.difference(weatherdb.lastWriteTime).inMinutes >= 30;
+    return currentTime.difference(weatherdb.lastWriteTime).inHours >= 1;
   }
 
 
@@ -155,14 +155,20 @@ class _WeatherPageState extends State<WeatherPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+
           children: [
-            Text(
-              weatherdb.weatherdata.isNotEmpty
-                  ? weatherdb.weatherdata.first["cityName"] ??
-                      "Loading city ..."
-                  : "Loading city ...",
-              style: GoogleFonts.poppins(
-                  fontSize: 30.0, fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+
+                weatherdb.weatherdata.isNotEmpty
+                    ? weatherdb.weatherdata.first["cityName"] ??
+                        "Loading city ..."
+                    : "Loading city ...",
+                style: GoogleFonts.poppins(
+                    fontSize: 30.0, fontWeight: FontWeight.bold),
+              ),
             ),
             // Animation
             Lottie.asset(getWeatherAnimations(weatherdb.weatherdata.isNotEmpty
