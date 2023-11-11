@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
@@ -32,10 +33,14 @@ class ToDoTile extends StatelessWidget {
           ],
         ),
         child: Container(
-          padding: EdgeInsets.all(24.0),
-          decoration: BoxDecoration(
-              color: Colors.blue[300],
-              borderRadius: BorderRadius.circular(12.0)),
+          padding: EdgeInsets.all(15.0),
+          decoration: const BoxDecoration(
+              color: Colors.transparent,
+              border: Border(
+                bottom: BorderSide(width: 2.0, color: Colors.black12),
+              ),
+             // borderRadius: BorderRadius.circular(12.0)),
+        ),
           child: Row(
             children: [
               Checkbox(
@@ -48,15 +53,21 @@ class ToDoTile extends StatelessWidget {
               ),
               Text(
                 taskName,
-                style: TextStyle(
-                    decoration: taskCompleted
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none),
+                style: GoogleFonts.openSans(
+                 // fontWeight: FontWeight.w600,
+                  fontSize: 18.0,
+                  decoration: taskCompleted
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+                  decorationThickness: taskCompleted ? 5.0 : null,
+                ),
               )
+
             ],
           ),
         ),
       ),
-    );
+      );
+
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterlearn/utilities/my_button.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DialogBox extends StatelessWidget {
   VoidCallback onSave;
@@ -30,6 +31,7 @@ class DialogBox extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              style: GoogleFonts.openSans(fontSize: 18.0),
               controller: controller,
               decoration: const InputDecoration(hintText: "Add a new task"),
             ),
@@ -40,6 +42,7 @@ class DialogBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 MyButton(
+
                     buttonName: "Save",
                     onPressed: onSave,
                     icon: Icon(Icons.check)),

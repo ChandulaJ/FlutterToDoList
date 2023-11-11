@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
   final String buttonName;
@@ -15,6 +16,6 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-        onPressed: onPressed, icon: icon, label: Text(buttonName));
+        onPressed: onPressed, icon: icon, label: Text(buttonName,style: GoogleFonts.openSans(fontSize: 18.0),));
   }
 }

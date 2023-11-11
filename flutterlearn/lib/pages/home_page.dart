@@ -3,6 +3,7 @@ import "package:flutterlearn/data/database.dart";
 import "package:flutterlearn/pages/weather_page.dart";
 import "package:flutterlearn/utilities/dialog_box.dart";
 import "package:flutterlearn/utilities/todoTile.dart";
+import "package:google_fonts/google_fonts.dart";
 import "package:hive/hive.dart";
 
 class HomePage extends StatefulWidget {
@@ -37,28 +38,38 @@ class _HomePageState extends State<HomePage> {
   }
 
   void saveNewTask() {
-    setState(() {
-      db.todolist.add([_controller.text, false]);
+    Future.delayed(Duration(milliseconds: 200), ()
+    {
+      setState(() {
+        if (_controller.text != '') {
+          db.todolist.add([_controller.text, false]);
+        }
+      });
+
+      Navigator.of(context).pop();
+      _controller.clear();
+      db.updateData();
     });
-    Navigator.of(context).pop();
-    _controller.clear();
-    db.updateData();
   }
 
   void createNewTask() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return DialogBox(
-          controller: _controller,
-          onCancel: () {
-            Navigator.of(context).pop();
-          },
-          onSave: saveNewTask,
-        );
-      },
-    );
+
+    Future.delayed(Duration(milliseconds: 200), () {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return DialogBox(
+            controller: _controller,
+            onCancel: () {
+              Navigator.of(context).pop();
+            },
+            onSave: saveNewTask,
+          );
+        },
+      );
+    });
   }
+
 
   void deleteTask(int index) {
     setState(() {
@@ -75,7 +86,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0.0,
         title: Center(
-          child: Text('TO DO'),
+          child: Text('To do List',style: GoogleFonts.handlee(fontSize: 30.0,fontWeight: FontWeight.bold),),
         ),
       ),
       body:
